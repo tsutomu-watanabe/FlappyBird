@@ -286,6 +286,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (contact.bodyA.categoryBitMask & scoreCategory) == scoreCategory || (contact.bodyB.categoryBitMask & scoreCategory) == scoreCategory || (contact.bodyA.categoryBitMask & itemCategory) == itemCategory || (contact.bodyB.categoryBitMask & itemCategory) == itemCategory {
             
             // スコア用の物体と衝突した
+            
             print("ScoreUp")
             
             if (contact.bodyA.categoryBitMask & itemCategory) == itemCategory || (contact.bodyB.categoryBitMask & itemCategory) == itemCategory {
@@ -374,7 +375,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let itemmovingDistance = CGFloat(self.frame.size.width + itemTexture.size().width)
         
         // 画面外まで移動するアクションを作成
-        let moveItem = SKAction.moveBy(x: -itemmovingDistance, y: 0, duration:4)
+        let moveItem = SKAction.moveBy(x: -itemmovingDistance, y: 0, duration:3.9)
         
         // 自身を取り除くアクションを作成
         let removeItem = SKAction.removeFromParent()
@@ -421,7 +422,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         })
         
         // 次のアイテム作成までの待ち時間のアクションを作成
-        let itemwaitAnimation = SKAction.wait(forDuration: 6)
+        let itemwaitAnimation = SKAction.wait(forDuration: 4)
         
         // アイテムを作成->待ち時間->アイテムを作成を無限に繰り替えるアクションを作成
         let repeatForeverAnimation = SKAction.repeatForever(SKAction.sequence([createitemAnimation, itemwaitAnimation]))
